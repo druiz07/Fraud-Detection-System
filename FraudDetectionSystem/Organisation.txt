@@ -1,0 +1,21 @@
+├── user/
+│   │   ├── UserController.java
+│   │   ├── UserService.java
+│   │   └── User.java
+│   ├── account/
+│   │   ├── AccountController.java
+│   │   ├── AccountService.java
+│   │   └── Account.java
+│   ├── transaction/
+│   │   ├── TransactionController.java
+│   │   ├── TransactionService.java
+│   │   └── Transaction.java
+│   ├── fraud/
+│   │   ├── FraudDetectionService.java
+│   │   └── FraudDetector.java
+│   └── FraudDetectionApplication.java
+
+
+
+
+
