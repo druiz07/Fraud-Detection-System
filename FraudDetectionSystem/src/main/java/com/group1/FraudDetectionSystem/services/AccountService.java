@@ -1,6 +1,6 @@
-package com.group1.FraudDetectionSystem.service;
+package com.group1.FraudDetectionSystem.services;
 
-import com.group1.FraudDetectionSystem.model.Account;
+import com.group1.FraudDetectionSystem.models.Account;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

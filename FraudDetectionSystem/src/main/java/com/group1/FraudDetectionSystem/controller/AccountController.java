@@ -1,6 +1,6 @@
 package com.group1.FraudDetectionSystem.controller;
 
-import com.group1.FraudDetectionSystem.service.AccountService;
+import com.group1.FraudDetectionSystem.services.AccountService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

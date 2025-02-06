@@ -1,7 +1,7 @@
 package com.group1.FraudDetectionSystem.controller;
 
-import com.group1.FraudDetectionSystem.model.User;
-import com.group1.FraudDetectionSystem.service.UserService;
+import com.group1.FraudDetectionSystem.models.User;
+import com.group1.FraudDetectionSystem.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
