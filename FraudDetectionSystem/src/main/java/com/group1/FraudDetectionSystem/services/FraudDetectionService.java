@@ -1,5 +1,6 @@
 package com.group1.FraudDetectionSystem.services;
 
+import com.group1.FraudDetectionSystem.models.FraudDetectionSystem;
 import com.group1.FraudDetectionSystem.models.Transaction;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +10,15 @@ import java.util.List;
 public class FraudDetectionService {
 
     private final List<Transaction> transactions;
+    private TransactionService transactionService;
+    private FraudDetectionSystem fraudDetectionSystem;
 
-    public FraudDetectionService(List<Transaction> transactions) {
+    public FraudDetectionService(List<Transaction> transactions, TransactionService transactionService) {
         this.transactions = transactions;
         startFraudDetection();
+        this.fraudDetectionSystem = new FraudDetectionSystem(transactionService);
+
+
     }
 
     private void startFraudDetection() {
@@ -35,19 +41,19 @@ public class FraudDetectionService {
     public void checkFraudulentTransactions() {
         for (Transaction transaction : transactions) {
 
-            if (FraudDetectionSystem.checkMultipleTransactionsInOneMinute(transaction.getAccountPay(), 5)) {
+            if (fraudDetectionSystem.checkMultipleTransactionsInOneMinute(transaction.getAccountPay(), 5)) {
                 transaction.setFlagged(true);
             }
 
 
-            if (FraudDetectionSystem.checkTransactionAmount(transaction.getAmount(), 5000)) {
+            if (fraudDetectionSystem.checkTransactionAmount(transaction.getAmount(), 5000)) {
                 transaction.setFlagged(true);
             }
 
-            if (FraudDetectionSystem.checkMultipleTransfersToSameRecipient(transaction.getAccountPay().getOwner(),
-                    transaction.getAccountReceive(), 3)) {
-                transaction.setFlagged(true);
-            }
+//            if (fraudDetectionSystem.checkMultipleTransfersToSameRecipient(transaction.getAccountPay(),
+//                    transaction.getAccountReceive(), 3)) {
+//                transaction.setFlagged(true);
+//            }
         }
     }
 }

@@ -33,4 +33,9 @@ public class TransactionController {
         this.transactionService.createTransaction(idPay, idReceive, transaction);
     }
 
+    @GetMapping("/startSimulation")
+    public void startSimulation(){
+        this.transactionService.simulateTransactions();
+    }
+
 }

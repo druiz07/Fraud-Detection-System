@@ -52,7 +52,7 @@ public class TransactionService {
         transaction.execute();
 
     }
-    private void simulateTransactions() {
+    public void simulateTransactions() {
         Runnable transactionSimulator = () -> {
             Random random = new Random();
             while (true) {
@@ -75,4 +75,14 @@ public class TransactionService {
         new Thread(transactionSimulator).start();
     }
 
+
+    public List<Transaction> getTransactionsOfAccount(long id){
+        List<Transaction> transactions = new ArrayList<>();
+        for(Transaction trans: this.transactions){
+            if(trans.getAccountReceive().getId() == id || trans.getAccountPay().getId() == id){
+                transactions.add(trans);
+            }
+        }
+        return transactions;
+    }
 }
