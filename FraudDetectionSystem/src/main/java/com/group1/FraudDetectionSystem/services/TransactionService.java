@@ -2,12 +2,13 @@ package com.group1.FraudDetectionSystem.services;
 
 import com.group1.FraudDetectionSystem.models.Account;
 import com.group1.FraudDetectionSystem.models.Transaction;
-import org.springframework.boot.autoconfigure.pulsar.PulsarProperties;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 
 @Service
 public class TransactionService {
@@ -51,6 +52,27 @@ public class TransactionService {
         transaction.execute();
 
     }
+    private void simulateTransactions() {
+        Runnable transactionSimulator = () -> {
+            Random random = new Random();
+            while (true) {
+                try {
+                    Thread.sleep(random.nextInt(5000));
+                    long idPay = random.nextInt(10) + 1;
+                    long idReceive = random.nextInt(10) + 1;
+                    double amount = random.nextDouble() * 10000;
 
+
+                    Transaction transaction = new Transaction(nextId++, amount, null, null);
+                    createTransaction(idPay, idReceive, transaction);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        };
+
+
+        new Thread(transactionSimulator).start();
+    }
 
 }
