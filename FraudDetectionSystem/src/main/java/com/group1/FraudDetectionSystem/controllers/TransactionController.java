@@ -29,8 +29,8 @@ public class TransactionController {
         return this.transactionService.getTransactionById(id);
     }
 
-    @PostMapping
-    public void createTransaction(@RequestBody double amount, long idPay, long idReceive){
+    @PostMapping("/{idPay}/{idReceive}")
+    public void createTransaction(@PathVariable long idPay, @PathVariable long idReceive, @RequestBody double amount){
         this.transactionService.createTransaction(amount, idPay, idReceive);
     }
 

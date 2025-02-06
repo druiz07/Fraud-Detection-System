@@ -1,5 +1,7 @@
 package com.group1.FraudDetectionSystem.controllers;
 
+import com.group1.FraudDetectionSystem.models.Account;
+import com.group1.FraudDetectionSystem.models.User;
 import com.group1.FraudDetectionSystem.services.AccountService;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,4 +13,10 @@ public class AccountController {
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
     }
+
+    @PostMapping()
+    public String createAccount(@RequestBody Account account) {
+        return accountService.createAccount(account);
+    }
+
 }
