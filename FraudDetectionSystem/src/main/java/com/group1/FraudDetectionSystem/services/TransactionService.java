@@ -14,7 +14,7 @@ public class TransactionService {
 
     private final List<Transaction> transactions = new ArrayList<>();
     private long nextId = 1L;
-    AccountService accountService = new AccountService();
+    private final AccountService accountService = new AccountService();
 
     public TransactionService() {
 
@@ -32,19 +32,20 @@ public class TransactionService {
         return null;
     }
 
-    public void createTransaction(double amount, long idPay, long idReceive){
-        Account accountPay = new Account();
-        Account accountRecieve = new Account();
-        for(Account acc: this.accountService.getAccounts().values()){
+    public void createTransaction(long idPay, long idReceive, Transaction transaction){
+        Account accountPay = null;
+        Account accountReceive = null;
+        for(Account acc: this.accountService.getAllAccounts()){
 
             if(acc.getId() == idPay){
                 accountPay = acc;
             }
             else if(acc.getId() == idReceive){
-                accountRecieve = acc;
+                accountReceive = acc;
             }
         }
-        Transaction transaction = new Transaction(nextId++, amount, accountPay, accountRecieve);
+        transaction.setAccountPay(accountPay);
+        transaction.setAccountReceive(accountReceive);
         transaction.setDate(LocalDateTime.now());
         this.transactions.add(transaction);
 

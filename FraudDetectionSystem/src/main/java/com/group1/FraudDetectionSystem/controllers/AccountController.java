@@ -5,6 +5,8 @@ import com.group1.FraudDetectionSystem.models.User;
 import com.group1.FraudDetectionSystem.services.AccountService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @RestController
 @RequestMapping("/accounts")
 public class AccountController {
@@ -12,6 +14,11 @@ public class AccountController {
 
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
+    }
+
+    @GetMapping
+    public Collection<Account> getAllUsers() {
+        return this.accountService.getAllAccounts();
     }
 
     @PostMapping()

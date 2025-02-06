@@ -71,9 +71,9 @@ public class Transaction {
         this.accountPay = account;
     }
 
-        public void execute() {
-          this.accountPay.withdraw(this.amount);
-          this.accountRecieve.deposit(this.amount);
+    public void execute() {
+        this.accountPay.withdraw(this.amount);
+        this.accountRecieve.deposit(this.amount);
 
     }
 
