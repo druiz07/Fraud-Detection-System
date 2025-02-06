@@ -30,7 +30,7 @@ public class TransactionController {
     }
 
     @PostMapping
-    public void createTransaction(@RequestBody Transaction transaction){
+    public void createTransaction(@RequestBody double amount, long idPay, long idReceive){
         this.transactionService.createTransaction(transaction);
     }
 

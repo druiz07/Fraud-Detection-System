@@ -17,8 +17,10 @@ public class Transaction {
     public Transaction(long id, double amount) {
         this.id = id;
         this.amount = amount;
-        //this.account = account;
+        //this.accountPay = accountPay;
+        //this.accountReceive = accountRecieve;
         this.date= LocalDateTime.now();
+        //this.execute();
     }
 
     public long getId() {

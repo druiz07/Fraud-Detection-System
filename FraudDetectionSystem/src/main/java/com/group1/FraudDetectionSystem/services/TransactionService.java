@@ -31,10 +31,12 @@ public class TransactionService {
         return null;
     }
 
-    public void createTransaction(Transaction transaction){
-        transaction.setId(nextId++);
+    public void createTransaction(double amount, long idPay, long idReceive){
+        Transaction transaction = new Transaction(nextId++, amount);
         transaction.setDate(LocalDateTime.now());
         this.transactions.add(transaction);
 
     }
+
+
 }
