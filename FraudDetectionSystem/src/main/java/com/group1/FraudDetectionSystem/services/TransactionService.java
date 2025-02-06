@@ -14,10 +14,10 @@ public class TransactionService {
 
     private final List<Transaction> transactions = new ArrayList<>();
     private long nextId = 1L;
-    private final AccountService accountService = new AccountService();
+    private  AccountService accountService;
 
-    public TransactionService() {
-
+    public TransactionService(AccountService accountService) {
+        this.accountService = accountService;
     }
 
 
@@ -48,6 +48,7 @@ public class TransactionService {
         transaction.setAccountReceive(accountReceive);
         transaction.setDate(LocalDateTime.now());
         this.transactions.add(transaction);
+        transaction.execute();
 
     }
 

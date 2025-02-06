@@ -20,7 +20,6 @@ public class Transaction {
         this.accountPay = accountPay;
         this.accountRecieve = accountRecieve;
         this.date= LocalDateTime.now();
-        this.execute();
     }
 
     public long getId() {
