@@ -16,4 +16,8 @@ public class AccountService {
         accounts.put(account.getId(), account);
         return "Account created with ID: " + account.getId();
     }
+
+    public Map<Long, Account> getAccounts() {
+        return accounts;
+    }
 }

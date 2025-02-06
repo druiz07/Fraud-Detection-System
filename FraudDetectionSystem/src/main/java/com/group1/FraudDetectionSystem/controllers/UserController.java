@@ -1,4 +1,4 @@
-package com.group1.FraudDetectionSystem.controller;
+package com.group1.FraudDetectionSystem.controllers;
 
 import com.group1.FraudDetectionSystem.models.User;
 import com.group1.FraudDetectionSystem.services.UserService;

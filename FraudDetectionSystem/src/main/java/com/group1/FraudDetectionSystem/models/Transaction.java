@@ -8,19 +8,19 @@ public class Transaction {
     private double amount;
     private boolean flagged = false;
     private LocalDateTime date;
-    //private Account accountPay;
-    //private Account accountReceive;
+    private Account accountPay;
+    private Account accountRecieve;
 
     public Transaction() {
     }
 
-    public Transaction(long id, double amount) {
+    public Transaction(long id, double amount, Account accountPay, Account accountReceive) {
         this.id = id;
         this.amount = amount;
-        //this.accountPay = accountPay;
-        //this.accountReceive = accountRecieve;
+        this.accountPay = accountPay;
+        this.accountRecieve = accountRecieve;
         this.date= LocalDateTime.now();
-        //this.execute();
+        this.execute();
     }
 
     public long getId() {
@@ -55,27 +55,27 @@ public class Transaction {
         this.date = date;
     }
 
-//    public Account getAccountReceive() {
-//        return account1;
-//    }
-//
-//    public void setAccountReceive(Account account) {
-//        this.account1 = account;
-//    }
+    public Account getAccountReceive() {
+        return accountRecieve;
+    }
 
-    //    public Account getAccountPay() {
-//        return AccountPay;
-//    }
-//
-//    public void setAccountPay(Account account) {
-//        this.AccountPay = account;
-//    }
+    public void setAccountReceive(Account account) {
+        this.accountRecieve = account;
+    }
 
-    //    public void execute() {
-//          this.accountPay.withdraw(this.amount);
-    //      this.accountReceive.deposit(this.amount);
+        public Account getAccountPay() {
+        return accountPay;
+    }
 
-//    }
+    public void setAccountPay(Account account) {
+        this.accountPay = account;
+    }
+
+        public void execute() {
+          this.accountPay.withdraw(this.amount);
+          this.accountRecieve.deposit(this.amount);
+
+    }
 
 
 

@@ -31,7 +31,7 @@ public class TransactionController {
 
     @PostMapping
     public void createTransaction(@RequestBody double amount, long idPay, long idReceive){
-        this.transactionService.createTransaction(transaction);
+        this.transactionService.createTransaction(amount, idPay, idReceive);
     }
 
 }
