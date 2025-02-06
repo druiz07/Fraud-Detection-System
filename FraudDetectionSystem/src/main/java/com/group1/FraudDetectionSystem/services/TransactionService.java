@@ -4,6 +4,7 @@ import com.group1.FraudDetectionSystem.models.Transaction;
 import org.springframework.boot.autoconfigure.pulsar.PulsarProperties;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ public class TransactionService {
     private long nextId = 1L;
 
     public TransactionService() {
+        this.transactions.add(new Transaction(this.nextId++, 5000));
+        this.transactions.add(new Transaction(this.nextId++, 2000));
     }
 
 
@@ -30,6 +33,8 @@ public class TransactionService {
 
     public void createTransaction(Transaction transaction){
         transaction.setId(nextId++);
+        transaction.setDate(LocalDateTime.now());
         this.transactions.add(transaction);
+
     }
 }

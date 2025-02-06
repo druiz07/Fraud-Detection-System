@@ -24,7 +24,7 @@ public class TransactionController {
         return this.transactionService.getAllTransactions();
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public Transaction getTransactionById(@PathVariable long id) {
         return this.transactionService.getTransactionById(id);
     }
