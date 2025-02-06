@@ -8,6 +8,8 @@ public class Transaction {
     private double amount;
     private boolean flagged = false;
     private LocalDateTime date;
+    //private Account accountPay;
+    //private Account accountReceive;
 
     public Transaction() {
     }
@@ -15,6 +17,7 @@ public class Transaction {
     public Transaction(long id, double amount) {
         this.id = id;
         this.amount = amount;
+        //this.account = account;
         this.date= LocalDateTime.now();
     }
 
@@ -49,4 +52,30 @@ public class Transaction {
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
+
+//    public Account getAccountReceive() {
+//        return account1;
+//    }
+//
+//    public void setAccountReceive(Account account) {
+//        this.account1 = account;
+//    }
+
+    //    public Account getAccountPay() {
+//        return AccountPay;
+//    }
+//
+//    public void setAccountPay(Account account) {
+//        this.AccountPay = account;
+//    }
+
+    //    public void execute() {
+//          this.accountPay.withdraw(this.amount);
+    //      this.accountReceive.deposit(this.amount);
+
+//    }
+
+
+
+
 }
