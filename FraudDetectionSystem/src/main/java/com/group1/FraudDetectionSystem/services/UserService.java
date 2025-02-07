@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Service for managing users.
+ */
 @Service
 public class UserService {
     private final Map<Long, User> users = new HashMap<>();
