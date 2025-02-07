@@ -59,9 +59,8 @@ public class FraudDetectionSystem {
      * @param owner the user who owns the account making the transfers
      * @param recipient the recipient account of the transfers
      * @param maxTransfers the maximum number of allowed transfers to the same recipient in the last 5 minutes
-     * @return true if the number of transfers exceeds the limit, false otherwise
      */
-    public boolean checkMultipleTransfersToSameRecipient(User owner, Account recipient, int maxTransfers) {
+    public void checkMultipleTransfersToSameRecipient(User owner, Account recipient, int maxTransfers) {
         LocalDateTime currentTime = LocalDateTime.now();
         long count = this.transactionService.getAllTransactions().stream()
                 .filter(transaction -> transaction.getAccountPay().getUserId() == owner.getId())  // Filter by the owner's user ID
@@ -69,6 +68,11 @@ public class FraudDetectionSystem {
                         transaction.getDate().isAfter(currentTime.minusMinutes(5)))  // Filter by recipient and transactions in the last 5 minutes
                 .count();
 
-        return count > maxTransfers;
+        if(count > maxTransfers){
+            this.transactionService.getAllTransactions().stream()
+                    .filter(transaction -> transaction.getAccountPay().getUserId() == owner.getId())  // Filter by the owner's user ID
+                    .filter(transaction -> transaction.getAccountReceive().equals(recipient) &&
+                            transaction.getDate().isAfter(currentTime.minusMinutes(5))).forEach(transaction -> transaction.setFlagged(true));
+        }
     }
 }

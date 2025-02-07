@@ -67,9 +67,10 @@ public class FraudDetectionService {
 
             // Check if there have been multiple transfers to the same recipient by any user
             for (User user : this.userService.getAllUsers()) {
-                if (fraudDetectionSystem.checkMultipleTransfersToSameRecipient(user, transaction.getAccountReceive(), 3)) {
-                    transaction.setFlagged(true);  // Flag the transaction if fraudulent
-                }
+                fraudDetectionSystem.checkMultipleTransfersToSameRecipient(user, transaction.getAccountReceive(), 3);
+
+
+
             }
         }
     }
