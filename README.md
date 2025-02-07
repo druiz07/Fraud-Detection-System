@@ -46,27 +46,7 @@ Welcome to the **Fraud Detection System** project! 🚀 Imagine a world where fr
 ---
 
 ### Project Structure
-FraudDetectionSystem
-│── controllers
-│   │── AccountController.java
-│   │── FraudDetectionController.java
-│   │── TransactionController.java
-│   │── UserController.java
-│
-│── models
-│   │── Account.java
-│   │── FraudDetectionSystem.java
-│   │── Transaction.java
-│   │── User.java
-│
-│── services
-│   │── AccountService.java
-│   │── FraudDetectionService.java
-│   │── TransactionService.java
-│   │── UserService.java
-│
-│── FraudDetectionSystemApplication.java
-
+<img width="472" alt="image" src="https://github.com/user-attachments/assets/66761f9f-56f6-4291-a96a-1c8810194f0e" />
 
 ---
 
