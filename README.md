@@ -163,8 +163,8 @@ Welcome to the **Fraud Detection System** project! 🚀 Imagine a world where fr
 ---
 
 ### Git Implementation
-<img width="760" alt="image" src="https://github.com/user-attachments/assets/a62a5cd9-ce26-4aad-8bf5-39a04b414b26" />
 <img width="760" alt="image" src="https://github.com/user-attachments/assets/5c430681-669e-4303-8942-e45284ccb788" />
+<img width="760" alt="image" src="https://github.com/user-attachments/assets/a62a5cd9-ce26-4aad-8bf5-39a04b414b26" />
 <img width="760" alt="image" src="https://github.com/user-attachments/assets/3d585d1a-d59e-4101-8d03-4d786e69f761" />
 
 ---
