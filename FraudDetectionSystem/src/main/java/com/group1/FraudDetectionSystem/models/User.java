@@ -9,8 +9,18 @@ public class User {
     private double monthlyIncome;
     private int creditScore;
 
+    /**
+     * Default constructor.
+     */
     public User() {}
 
+    /**
+     * Constructs a user with given details.
+     * @param id User ID.
+     * @param name User's name.
+     * @param monthlyIncome Monthly income of the user.
+     * @param creditScore Credit score of the user.
+     */
     public User(long id, String name, double monthlyIncome, int creditScore) {
         this.id = id;
         this.name = name;
