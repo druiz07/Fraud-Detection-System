@@ -159,6 +159,10 @@ Welcome to the **Fraud Detection System** project! 🚀 Imagine a world where fr
 1. **Problem with making transactions on Postman**
     - **Issue:** Faced difficulties in processing transactions correctly.
     - **Solution:** Reviewed the code and rechecked the logic to identify and fix the issue.
+    - 
+2. **Problem with 3rd fraud condition**
+   - **Isue** Transactions were not marked as suspicious.
+   - **Solution** Refactoring checked method to set transactions as true.
 
 ---
 
