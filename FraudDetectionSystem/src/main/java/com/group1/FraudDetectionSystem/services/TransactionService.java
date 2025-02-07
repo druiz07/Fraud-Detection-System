@@ -45,6 +45,7 @@ public class TransactionService {
                 accountReceive = acc;
             }
         }
+        transaction.setId(nextId++);
         transaction.setAccountPay(accountPay);
         transaction.setAccountReceive(accountReceive);
         transaction.setDate(LocalDateTime.now());

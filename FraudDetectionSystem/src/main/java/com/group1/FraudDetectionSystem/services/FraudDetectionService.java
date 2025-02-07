@@ -2,6 +2,7 @@ package com.group1.FraudDetectionSystem.services;
 
 import com.group1.FraudDetectionSystem.models.FraudDetectionSystem;
 import com.group1.FraudDetectionSystem.models.Transaction;
+import com.group1.FraudDetectionSystem.models.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,14 +10,17 @@ import java.util.List;
 @Service
 public class FraudDetectionService {
 
-    private final List<Transaction> transactions;
+
     private TransactionService transactionService;
+    private UserService userService;
     private FraudDetectionSystem fraudDetectionSystem;
 
-    public FraudDetectionService(List<Transaction> transactions, TransactionService transactionService) {
-        this.transactions = transactions;
-        startFraudDetection();
+    public FraudDetectionService(TransactionService transactionService, UserService userService) {
+        this.transactionService = transactionService;
         this.fraudDetectionSystem = new FraudDetectionSystem(transactionService);
+        this.userService = userService;
+        startFraudDetection();
+
 
 
     }
@@ -39,7 +43,7 @@ public class FraudDetectionService {
 
 
     public void checkFraudulentTransactions() {
-        for (Transaction transaction : transactions) {
+        for (Transaction transaction : this.transactionService.getAllTransactions()) {
 
             if (fraudDetectionSystem.checkMultipleTransactionsInOneMinute(transaction.getAccountPay(), 5)) {
                 transaction.setFlagged(true);
@@ -49,11 +53,12 @@ public class FraudDetectionService {
             if (fraudDetectionSystem.checkTransactionAmount(transaction.getAmount(), 5000)) {
                 transaction.setFlagged(true);
             }
-
-//            if (fraudDetectionSystem.checkMultipleTransfersToSameRecipient(transaction.getAccountPay(),
-//                    transaction.getAccountReceive(), 3)) {
-//                transaction.setFlagged(true);
-//            }
+            for(User user: this.userService.getAllUsers()) {
+                if (fraudDetectionSystem.checkMultipleTransfersToSameRecipient(user,
+                        transaction.getAccountReceive(), 3)) {
+                    transaction.setFlagged(true);
+                }
+            }
         }
     }
 }
