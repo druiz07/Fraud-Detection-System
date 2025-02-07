@@ -88,13 +88,70 @@ Welcome to the **Fraud Detection System** project! 🚀 Imagine a world where fr
 ---
 
 ## 💳 Transaction Processing by Sergio
-(add explanation)
+
+### 🏦 Transaction Model
+- The `Transaction` class represents a **banking transaction** and contains:
+  - `id`: A unique identifier for the transaction.
+  - `amount`: The amount of the transaction.
+  - `flagged`: A flag indicating whether the transaction has been marked as suspicious.
+  - `date`: The date and time when the transaction was executed.
+  - `accountPay`: A reference to the account initiating the payment.
+  - `accountRecieve`: A reference to the account receiving the payment.
+- Additionally, it includes the `execute()` method which performs the transaction by updating the balances of the associated accounts (i.e., debiting the payer and crediting the receiver).
+
+### 🛠️ Transaction Service
+- `TransactionService` is responsible for:
+  - **Storage:**  
+    Maintaining an in-memory list (e.g., a `List<Transaction>`) of all transactions.
+  - **Creation and Execution:**  
+    - Creating new transactions by properly linking the payer and receiver accounts.
+    - Assigning a unique identifier and setting the execution timestamp.
+    - Executing the transaction, which involves updating the balances of the corresponding accounts.
+  - **Data Retrieval:**  
+    Providing methods to retrieve all transactions or search for a specific transaction by its ID.
+  - **Real-Time Simulation:**  
+    Starting a separate thread that generates random transactions at random intervals, thereby simulating real-time activity.
+
+### 🛡️ Transaction Controller
+- `TransactionController` exposes the following REST endpoints:
+  - **GET `/transactions`:**  
+    Retrieves all recorded transactions.
+  - **GET `/transactions/{id}`:**  
+    Retrieves a specific transaction by its identifier.
+  - **POST `/transactions/{idPay}/{idReceive}`:**  
+    Creates a new transaction between the payer (`idPay`) and the receiver (`idReceive`), with transaction details provided in the request body.
+  - **GET `/transactions/startSimulation`:**  
+    Starts the simulation of real-time transactions.
 
 ---
 
 ## 🔒 Fraud Detection System by Daniel (Leader)
-(add explanation)
 
+### 🏦 FraudDetectionSystem Model
+- The `FraudDetectionSystem` class implements the core rules for detecting fraudulent transactions:
+  - **Multiple Transactions in One Minute:**  
+    Checks if an account performs more than 5 transactions within a 60-second interval.
+  - **High-Value Transaction:**  
+    Flags any transaction where the amount exceeds $5000.
+  - **Multiple Transfers to the Same Recipient:**  
+    Flags instances when multiple accounts associated with the same user transfer money to the same recipient within a 5-minute period.
+    
+### 🛠️ Fraud Detection Service  
+- `FraudDetectionService` is responsible for:  
+  - **Continuous Monitoring:**  
+    A background thread that runs every **10 seconds** to scan for fraudulent transactions.  
+  - **Rule-Based Detection:**  
+    - Identifies accounts making **more than 5 transactions in one minute**.  
+    - Flags transactions **exceeding $5000**.  
+    - Detects when multiple accounts from the same user send money to **the same recipient within 5 minutes**.  
+  - **Flagging & Reporting:**  
+    - Updates flagged transactions.  
+    - Stores flagged transactions for auditing and reporting purposes.  
+
+### 🛡️ Fraud Detection Controller  
+- `FraudDetectionController` exposes the following REST endpoints:  
+  - **POST `/fraud/checkFraud`:**  
+    Manually triggers fraud detection and flags suspicious transactions. 
 ---
 
 ## 🛠️ Issues Encountered
@@ -106,7 +163,9 @@ Welcome to the **Fraud Detection System** project! 🚀 Imagine a world where fr
 ---
 
 ### Git Implementation
-(add screenshot)
+<img width="760" alt="image" src="https://github.com/user-attachments/assets/a62a5cd9-ce26-4aad-8bf5-39a04b414b26" />
+<img width="760" alt="image" src="https://github.com/user-attachments/assets/5c430681-669e-4303-8942-e45284ccb788" />
+<img width="760" alt="image" src="https://github.com/user-attachments/assets/3d585d1a-d59e-4101-8d03-4d786e69f761" />
 
 ---
 
