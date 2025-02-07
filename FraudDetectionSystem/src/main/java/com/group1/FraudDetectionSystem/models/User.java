@@ -1,4 +1,4 @@
-package com.group1.FraudDetectionSystem.model;
+package com.group1.FraudDetectionSystem.models;
 
 public class User {
     private long id;

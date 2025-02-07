@@ -1,4 +1,4 @@
-package com.group1.FraudDetectionSystem.model;
+package com.group1.FraudDetectionSystem.models;
 
 public class Account {
     private long id;
@@ -35,5 +35,19 @@ public class Account {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public void deposit(double amount){
+        this.balance += amount;
+    }
+
+    public boolean withdraw(double amount){
+        if(this.balance<amount){
+            return false;
+        }
+        else{
+            this.balance-=amount;
+            return true;
+        }
     }
 }
