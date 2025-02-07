@@ -1,5 +1,8 @@
 package com.group1.FraudDetectionSystem.models;
 
+/**
+ * Represents a bank user.
+ */
 public class User {
     private long id;
     private String name;
